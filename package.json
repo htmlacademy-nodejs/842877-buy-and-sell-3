@@ -1,7 +1,7 @@
 {
   "name": "842877-buy-and-sell-3",
   "version": "1.0.0",
-  "description": "Введите «Куплю. Продам»",
+  "description": "«Куплю. Продам»",
   "main": "./src/service/service.js",
   "scripts": {
     "start": "node ./src/service/service.js",
