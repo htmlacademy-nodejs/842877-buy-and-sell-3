@@ -67,16 +67,20 @@ const getPictureFileName = (number) => {
   return (number < 10) ? `item0${number}.jpg` : `item${number}.jpg`;
 };
 
-const generateOffers = (count) => (
-  Array(count).fill({}).map(() => ({
-    category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]],
-    description: shuffle(SENTENCES).slice(1, 5).join(` `),
-    picture: getPictureFileName(getRandomInt(PictureRestrict.min, PictureRestrict.max)),
-    title: TITLES[getRandomInt(0, TITLES.length - 1)],
-    type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
-    sum: getRandomInt(SumRestrict.min, SumRestrict.max),
-  }))
-);
+const generateOffers = (count) => {
+  const offers = [];
+  for (let index = 0; index < count; index++) {
+    offers.push({
+      category: [CATEGORIES[getRandomInt(0, CATEGORIES.length)]],
+      description: shuffle([...SENTENCES]).slice(1, 5).join(` `),
+      picture: getPictureFileName(getRandomInt(PictureRestrict.min, PictureRestrict.max + 1)),
+      title: TITLES[getRandomInt(0, TITLES.length)],
+      type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
+      sum: getRandomInt(SumRestrict.min, SumRestrict.max + 1),
+    });
+  }
+  return offers;
+};
 
 module.exports = {
   name: `--generate`,

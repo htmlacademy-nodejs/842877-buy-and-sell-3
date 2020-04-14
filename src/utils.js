@@ -1,16 +1,16 @@
 'use strict';
 
 module.exports.getRandomInt = (min, max) => {
-  min = Math.ceil(min);
+  min = Math.floor(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
-module.exports.shuffle = (someArray) => {
-  for (let i = someArray.length - 1; i > 0; i--) {
+module.exports.shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
     const randomPosition = Math.floor(Math.random() * i);
-    [someArray[i], someArray[randomPosition]] = [someArray[randomPosition], someArray[i]];
+    [array[i], array[randomPosition]] = [array[randomPosition], array[i]];
   }
 
-  return someArray;
+  return array;
 };
